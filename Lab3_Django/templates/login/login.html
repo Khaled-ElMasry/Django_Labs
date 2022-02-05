@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block headersets %}
+    <title>Login</title>
+{% endblock headersets %}
+
+{% block content %}
+    <div class="w-50 m-auto">
+
+        <h1>Already a user?</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% comment %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="usrmail">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+            </div>
+            {% endcomment %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {% if messages %}
+                <div class="alert alert-danger">
+                    {% for message in messages %}
+                        {{ message }}
+                        <a href="{% url 'register' %}" >Sign-up</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+        </form>
+    </div>
+{% endblock content %}

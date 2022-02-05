@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block headersets %}
+        <title>Update</title>
+    {% endblock headersets %}
+
+{% block content %}
+    {% include 'components/affairsNav.html' %}
+
+    <h3 class="text-center pt-3">Are you sure to update {{ data.student_fname }}
+        {{ data.student_lname }} ?</h3>
+    <div class="pt-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Gender</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">{{ data.student_id }}</th>
+                <td>{{ data.student_fname }}</td>
+                <td>{{ data.student_lname }}</td>
+                <td>{{ data.student_email }}</td>
+                <td>{{ data.student_gender }}</td>
+
+
+            </tr>
+            </tbody>
+
+        </table>
+        <form method="post">
+            {% csrf_token %}
+            {% include 'components/Students/InsertForm.html' with std_fname=data.student_fname std_lname=data.student_lname std_email=data.student_email std_gender=data.student_gender %}
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block headersets %}
+    <title>Students Page</title>
+{% endblock headersets %}
+
+{% block content %}
+    {% include 'components/affairsNav.html' %}
+    {% if user.is_authenticated %}
+        <h3 class="text-center pt-3"> Those are the student are currently added to your platform</h3>
+        <form>
+            <div class="input-group mb-3 ">
+                <span class="input-group-text">Search</span>
+                <select class="form-select " name="choice">
+                    <option value="name" selected>Name</option>
+                    <option value="email">Email</option>
+                    <option value="gender">Gender</option>
+                </select>
+                <input type="text" class="form-control w-75" name="search">
+            </div>
+        </form>
+        <div class="pt-3">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Gender</th>
+                    <th>
+                        Del
+
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in data %}
+
+                    <tr>
+                        <th scope="row">{{ item.student_id }}</th>
+                        <td>{{ item.student_fname }}</td>
+                        <td>{{ item.student_lname }}</td>
+                        <td>{{ item.student_email }}</td>
+                        <td>{{ item.student_gender }}</td>
+                        <td><a href="{% url 'del_student' item.student_id %}">
+
+                            <i class="fas fa-user-times text-danger"></i>
+                        </a>
+
+                        </td>
+                        <td><a href="{% url 'update_student' item.student_id %}"><i
+                                class="fas fa-edit text-success"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    {% else %}
+
+        Please Login to list the students
+    {% endif %}
+
+
+{% endblock content %}

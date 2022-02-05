@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block headersets %}
+    <title>Insert Student</title>
+{% endblock headersets %}
+{% block content %}
+    {% include 'components/affairsNav.html' %}
+    <div class="container py-5 w-75">
+        {% if user.is_authenticated %}
+            <form method="post">
+                {% csrf_token %}
+                {% include 'components/Students/InsertForm.html' %}
+                <button type="submit" class="btn btn-primary">Insert</button>
+
+            </form>
+        {% else %}
+
+        Please Login to add students
+    {% endif %}
+
+    </div>
+
+{% endblock content %}

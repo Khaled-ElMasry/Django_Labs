@@ -1,0 +1,23 @@
+<div class="input-group mb-3">
+    <span class="input-group-text">First and last name</span>
+    <input type="text" aria-label="First name" class="form-control" name="fname" value="{{ std_fname }}">
+    <input type="text" aria-label="Last name" class="form-control" name="lname" value="{{ std_lname }}">
+</div>
+<div class="input-group mb-3">
+    <span class="input-group-text">Email</span>
+    <input type="email" class="form-control" aria-label="Email" name="email" value="{{ std_email }}">
+</div>
+<div class="input-group mb-3">
+    <span class="input-group-text">Gender</span>
+    <select class="form-select" aria-label="Default select example" name="gender">
+        {% if std_gender == "female" %}
+            <option value="male" >Male</option>
+            <option value="female" selected>Female</option>
+            {% else %}
+             <option value="male" selected>Male</option>
+            <option value="female" >Female</option>
+        {% endif %}
+
+
+    </select>
+</div>

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block headersets %}
+    <title>Register</title>
+{% endblock headersets %}
+
+{% block content %}
+    <div class="w-50 m-auto">
+
+        <h1>Register a new user</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label class="form-label">Your name</label>
+
+
+            <div class="row mb-3">
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="First name" aria-label="First name"
+                           name="firstname" required>
+                </div>
+
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
+                           name="lastname" required>
+                </div>
+
+
+            </div>
+
+
+            <label class="form-label">username</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                       name="username" required>
+
+            </div>
+            <div class="mb-3">
+                <label for="emailField" class="form-label">Email</label>
+                <input type="email" class="form-control" id="emailField" aria-describedby="emailHelp" name="email"
+                       required>
+                <div id="emailHelp" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" required name="password">
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{% endblock content %}

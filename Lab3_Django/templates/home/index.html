@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block headersets %}
+        <title>Home Page</title>
+    {% endblock headersets %}
+{% include 'components/navbar.html' %}
+{% block content %}
+   {% if user.is_authenticated %}
+      <p class="text-muted"> Hi {{ user.username }},</p>
+    {% endif %}
+{% endblock content%}
